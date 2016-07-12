@@ -1,0 +1,14 @@
+{
+  "name": "cat-click",
+  "version": "1.0.0",
+  "description": "Cat Click Project",
+  "main": "index.html",
+  "devDependencies": {
+    "http-server": "^0.9.0"
+  },
+  "scripts": {
+    "start": "http-server -a localhost -p 8000 -c-1"
+  },
+  "author": "Narain Mittal",
+  "license": "ISC"
+}
