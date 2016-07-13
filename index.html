@@ -1,14 +1,25 @@
 <html>
 <head>
-<script type="text/javascript" src="./js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="./js/vendor/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="./js/vendor/angular.min.js"></script>
 <script type="text/javascript" src="./js/main.js"></script>
+<link rel="stylesheet" href="./css/bootstrap.min.css"/>
 </head>
-<body >
-<div id="idImageDiv">
-<!-- <img  id="catImgId" src="http://lorempixel.com/400/200/cats/"></img> -->
-</div>
-<div>
-<span>Click Count:</span><span id="idCount"></span>
-</div>
-</body>
+	<body ng-app="catClick">
+		<div class="container"> 
+		<div class="jumbotron">
+			<h1>Cat Click Project</h1>
+        </div>
+		<div id="idImageDiv" ng-controller="catCtrl" class="form-group">
+		<div class="form-group" ng-repeat="cat in catList">
+		<div class="row">
+			<div class="col-xs-6"><img ng-src="{{cat.src}}" title="{{cat.name}}" ng-click="imageClick(cat)"/></div>
+			<div class="col-xs-2 "><p class="text-primary">Cat Name: <strong>{{cat.name}}</strong></p></div>
+			<div class="col-xs-2"><p class="text-primary">Cat Click Count: <strong>{{cat.clickCount}}</strong></p></div>
+		</div>
+		</div>
+		</div>
+		</div>
+
+	</body>
 </html>
