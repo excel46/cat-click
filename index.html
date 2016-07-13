@@ -11,11 +11,19 @@
 			<h1>Cat Click Project</h1>
         </div>
 		<div id="idImageDiv" ng-controller="catCtrl" class="form-group">
-		<div class="form-group" ng-repeat="cat in catList">
+		<div class="form-group" >
 		<div class="row">
-			<div class="col-xs-6"><img ng-src="{{cat.src}}" title="{{cat.name}}" ng-click="imageClick(cat)"/></div>
-			<div class="col-xs-2 "><p class="text-primary">Cat Name: <strong>{{cat.name}}</strong></p></div>
-			<div class="col-xs-2"><p class="text-primary">Cat Click Count: <strong>{{cat.clickCount}}</strong></p></div>
+			<div class="col-md-2">
+			<ul class="nav nav-pills nav-stacked">
+			  <li role="presentation" ng-repeat="catObject in catList" ><a href="#" ng-click="selectCat(catObject)">{{catObject.name}}</a></li>
+			    
+			</ul>
+			</div>
+			<div class="col-md-9 col-md-offset-1">
+				<div class="col-md-6"><img ng-src="{{cat.src}}" title="{{cat.name}}" ng-click="imageClick(cat)"/></div>
+				<div class="col-md-2"><p class="text-primary">Cat Name: <strong>{{cat.name}}</strong></p></div>
+				<div class="col-md-2"><p class="text-primary">Cat Click Count: <strong>{{cat.clickCount}}</strong></p></div>
+			</div>
 		</div>
 		</div>
 		</div>
