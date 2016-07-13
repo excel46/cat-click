@@ -7,7 +7,7 @@ $(images).each(function (dex,item){
 	var imgDiv= $('<div>');
 	imgDiv.append($('<img>').attr('src', item.src).attr('id',dex));
 	imgDiv.append($('<div>').text('Cat name: '+item.name));
-	imgDiv.append($('<span>').text('Cat click count: '+item.clickCount));
+	//imgDiv.append($('<span>').text('Cat click count: '+item.clickCount));
 	//imgDiv.append('</div>');
 	imgDiv.appendTo(parentDiv);
 });
