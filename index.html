@@ -14,15 +14,24 @@
 		<div class="form-group" >
 		<div class="row">
 			<div class="col-md-2">
-			<ul class="nav nav-pills nav-stacked">
-			  <li role="presentation" ng-repeat="catObject in catList" ><a href="#" ng-click="selectCat(catObject)">{{catObject.name}}</a></li>
-			    
-			</ul>
+			
+			<div class="list-group">
+			  <a class="list-group-item" href="#" ng-repeat="catOb in octopus.getAllCats()" ng-click="octopus.selectCat(catOb.id)"> {{catOb.name}} <a>
+			</div>
+			
 			</div>
 			<div class="col-md-9 col-md-offset-1">
-				<div class="col-md-6"><img ng-src="{{cat.src}}" title="{{cat.name}}" ng-click="imageClick(cat)"/></div>
-				<div class="col-md-2"><p class="text-primary">Cat Name: <strong>{{cat.name}}</strong></p></div>
-				<div class="col-md-2"><p class="text-primary">Cat Click Count: <strong>{{cat.clickCount}}</strong></p></div>
+				<div class="panel panel-default">
+					<div class="panel-heading"> <p>Cat Name: {{octopus.selectedCat.name}} </p></div>
+					<div class="panel-body">  
+					<div>
+					<a href="#" ng-click="octopus.catClick(octopus.selectedCat.id)" > <img ng-src="{{octopus.selectedCat.src}}" ></img> </a>
+					</div>	
+					</div>
+					<div class="panel-footer">Cat click count: {{ octopus.selectedCat.clickCount }}</div>
+				</div>
+			
+				
 			</div>
 		</div>
 		</div>
