@@ -23,8 +23,26 @@ $scope.octopus={
 		
 	},
 	selectedCat: model.currentCat,
+	selectedCatCopy: null,
 	catClick: function (){
 		$scope.octopus.selectedCat.clickCount++;
+	},
+	adminMode: false,
+	enableAdminMode: function (){
+		$scope.octopus.selectedCatCopy= angular.copy($scope.octopus.selectedCat);
+		$scope.octopus.adminMode=true;
+	},
+	disableAdminMode: function (){
+		$scope.octopus.selectedCatCopy=null;
+		$scope.octopus.adminMode=false;
+	},
+	saveAdminData: function (){
+		$scope.octopus.selectedCat=angular.copy($scope.octopus.selectedCatCopy);
+		angular.forEach(model.catList, function (cat, dex){
+			if(cat.id==$scope.octopus.selectedCat.id){
+				model.catList[dex]=$scope.octopus.selectedCat;				
+			}
+		});
 	},
 	init: function (){
 		$scope.octopus.selectedCat=model.catList[0];

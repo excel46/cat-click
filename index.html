@@ -26,6 +26,9 @@
 					<div class="panel-body">  
 					<div>
 					<a href="#" ng-click="octopus.catClick()" > <img ng-src="{{octopus.selectedCat.src}}" ></img> </a>
+					<br/>
+					<br/>
+					<input type="button" class="btn btn-default" value="Admin" ng-click="octopus.enableAdminMode()"/> 
 					</div>	
 					</div>
 					<div class="panel-footer">Cat click count: {{ octopus.selectedCat.clickCount }}</div>
@@ -33,6 +36,25 @@
 			
 				
 			</div>
+		</div>
+		<div ng-show="octopus.adminMode">
+		<div class="row" >
+			<div class="col-md-8">
+			<div class="form-group" > 
+				
+				<label for="cat-name"> Cat Name: </label> <input type="text" name="cat-name" class="form-control" ng-model="octopus.selectedCatCopy.name"/> 
+				<label for="cat-url"> Cat Image Url: </label> <input type="text" name="cat-url" class="form-control" ng-model="octopus.selectedCatCopy.src"/> 
+				<label for="cat-count"> Cat click count: </label> <input type="text" name="cat-count" class="form-control" ng-model="octopus.selectedCatCopy.clickCount"/> 
+				
+				
+			</div>
+			</div>
+			<div class="col-md-4"></div>
+		</div>
+		<div class="row">
+			<input type="button" class="btn btn-default" value="Cancel" ng-click="octopus.disableAdminMode()"/> 
+			<input type="button" class="btn btn-primary" value="Save" ng-click="octopus.saveAdminData()"/> 
+		</div>
 		</div>
 		</div>
 		</div>
