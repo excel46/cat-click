@@ -9,14 +9,19 @@
 			<h1>Cat Click Project</h1>
         </div>
 		<div id="idImageDiv"  class="form-group">
-		<div class="form-group" >
-		<div class="row">
-			<div class="col-xs-6"><img  data-bind="attr : {src: currentCat().catSrc, title: currentCat().catTitle}, click: increment()"/></div>
-			<div class="col-xs-2 "><p class="text-primary">Cat Name: <strong data-bind="text: currentCat().catName"></strong></p></div>
-			<div class="col-xs-2 "><p class="text-primary">Cat Level: <strong data-bind="text: currentCat().level"></strong></p></div>
-			<div class="col-xs-2"><p class="text-primary">Cat Click Count: <strong data-bind="text: currentCat().clickCount"></strong></p></div>
+		
+		<div class="list-group" data-bind="foreach: catList()">
+			  <a class="list-group-item" href="#" data-bind="text: catName, click: $parent.selectCat">  </a>
 		</div>
-		<ul data-bind="foreach: currentCat().nickNames">
+		<div class="form-group" data-bind="with: currentCat()">
+		<div class="row" >
+			<div class="col-xs-6"><img  data-bind="attr : {src: catSrc, title: catTitle}, click: $parent.increment()"/></div>
+			<div class="col-xs-2 "><p class="text-primary">Cat Name: <strong data-bind="text: catName"></strong></p></div>
+			<div class="col-xs-2 "><p class="text-primary">Cat Level: <strong data-bind="text: level"></strong></p></div>
+			<div class="col-xs-2"><p class="text-primary">Cat Click Count: <strong data-bind="text: clickCount"></strong></p></div>
+			
+		</div>
+		<ul data-bind="foreach: nicknames">
 			<li data-bind="text: $data"></li>
 		</ul>
 		</div>

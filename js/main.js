@@ -1,14 +1,24 @@
-var Cat= function (){
-this.catName=ko.observable('Mr. Jerry');
-this.catSrc=ko.observable('http://lorempixel.com/400/200/cats/1');
-this.clickCount=ko.observable(0);
+var initialList=[
+		{id :'catId1', name:'Mr. Tom', src: "http://lorempixel.com/400/200/cats/1", clickCount:0, nicknames:['Mr. Tom', 'Black Cat', 'Jumbo']},
+		{id :'catId2', name:'Mr. Jerry', src: "http://lorempixel.com/400/200/cats/2", clickCount:0,nicknames:['Jerry J']},
+		{id :'catId3', name:'Mumbo Jumbo', src: "http://lorempixel.com/400/200/cats/3", clickCount:0, nicknames:['Big guy']},
+		{id :'catId4', name:'Purr', src: "http://lorempixel.com/400/200/cats/4", clickCount:0, nicknames:['Billo']},
+		{id :'catId5', name:'Kitty Kat', src: "http://lorempixel.com/400/200/cats/5", clickCount:0, nicknames:['Kate']}
+		];
+var Cat= function (data){
+this.catName=ko.observable(data.name);
+this.catSrc=ko.observable(data.src);
+this.clickCount=ko.observable(data.clickCount);
+this.nicknames= ko.observableArray(data.nicknames);
+
 this.level= ko.computed(function (){
 	var level;
-	if(this.clickCount()<5){
+	var clicks=this.clickCount();
+	if(clicks<5){
 		level= 'newborn';
-	}else if(this.clickCount()<10){
+	}else if(clicks<10){
 		level='sitter';
-	}else if(this.clickCount()<15){
+	}else if(clicks<15){
 		level='toddler';
 	}else{
 		level='teen';
@@ -21,14 +31,23 @@ this.catTitle= ko.computed(function (){
 	return this.catName()+' '+this.clickCount();
 }, this);
 
-this.nickNames= ko.observableArray(['Mr. Tom', 'Black Cat', 'Jumbo']);
+
 }
 
 var ViewModel = function (){
+var self=this;
+this.catList=ko.observableArray([]);
+initialList.forEach(function (cat){
+	self.catList().push(new Cat(cat));
+});
+this.currentCat= ko.observable(self.catList()[0]);
 
-this.currentCat= ko.observable(new Cat());
+this.selectCat=function (){
+	//console.log(index);
+	self.currentCat(this);
+}
 this.increment= function (){
-	this.currentCat().clickCount(this.currentCat().clickCount()+1);
+	self.currentCat().clickCount(self.currentCat().clickCount()+1);
 	
 };
 
